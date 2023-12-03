@@ -1,0 +1,80 @@
+.mySlides {display:none;}
+.hp-display-left{position:absolute;top:50%;}
+.hp-display-right{position:absolute;top:50%;}
+.img-holder {position: relative;}
+
+.img-holder .hp-display-left {
+    position: absolute;
+    /*bottom: 10px; /*your button position*/
+    left: 50px; /*your button position*/
+}
+
+.img-holder .hp-display-right {
+    position: absolute;
+    /*bottom: 10px; /*your button position*/
+    right: 50px; /*your button position*/
+}
+
+a.button1{
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    text-align:center;
+    transition: all 0.2s;
+}
+a.button1:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+}
+@media all and (max-width:30em){
+    a.button1{
+        display:block;
+        margin:0.4em auto;
+    }
+}
+
+.slideCaption{
+    background-color: #eeeeee;
+    padding:0.35em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-align:center;
+}
+.mySlides .slideCaption {
+    position: absolute;
+    bottom: 40px; /*your button position*/
+    left: 60px;
+}
+
+.hoverOpacity figure img {
+    opacity: 1;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.hoverOpacity figure:hover img {
+    opacity: .7;
+}
+
+.bigButton {
+    background-color: darkorange;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+}
+.bigButton:hover{
+    background-color:darkslateblue;
+}

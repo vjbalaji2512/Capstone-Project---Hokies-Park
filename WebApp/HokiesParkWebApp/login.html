@@ -1,0 +1,233 @@
+
+<!DOCTYPE html>
+<!-- === Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Hokies' Park</title>
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="styles/homeStyles.css">
+    <link rel="icon" type="image/x-icon" href="res/img/logo.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!--<title>Login & Registration Form</title>-->
+</head>
+<body >
+    <div class="container">
+        <div class="forms">
+            <div class="form login">
+                <span class="title">Hokie Login</span>
+
+
+                <form action="#" >
+                    <div class="input-field">
+                        <input id="userEmail" type="text" placeholder="Enter your email" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input id="userPassword" type="password" class="password" placeholder="Enter your password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="checkbox" id="logCheck">
+                            <label for="logCheck" class="text">Remember me</label>
+                        </div>
+
+                    </div>
+
+                    <div class="input-field button">
+                        <input type="submit" value="Login" onclick="verifyLogin()">
+                    </div>
+                </form>
+
+                <div class="login-signup">
+                    <span class="text">Not a member?
+                        <a href="#" class="text signup-link">Signup Now</a>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="form signup">
+                <span class="title">Registration</span>
+
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" id ="firstname" placeholder="First Name" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id ="lastname" placeholder="Last Name" required>
+                        <i class="uil uil-user"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id ="email" placeholder="Enter your email" required>
+                        <i class="uil uil-envelope icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="password" class="password" placeholder="Create a password" required>
+                        <i class="uil uil-lock icon"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="rpassword"class="password" placeholder="Confirm a password" required>
+                        <i class="uil uil-lock icon"></i>
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+                    <div class="custom-select">
+                        <div class= "icon_dropdown"><i class="uil uil-envelope-add"></i>
+                            <select name="Permit Type" id="permittype" >
+                                <option class="custom-placeholder" value= "PermitName">Select Permit Type</option>
+                                <option value="FSA">FSA</option>
+                                <option value="FSF">FSF</option>
+                                <option value="FSC">FSC</option>
+                                <option value="WG">WG</option>
+                                <option value="NEG">NEG</option>
+                                <option value="RFID">RFID</option>
+                                <option value="Graduate">Graduate</option>
+                                <option value="Undergraduate">Undergraduate</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="permitnumber" name="Permit No" placeholder="Permit Number" maxlength="10" required>
+                        <i class="uil uil-credit-card"></i>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="phone" name="Phone No" placeholder="Phone Number" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
+                        <i class="uil uil-phone icon"></i>
+                    </div>
+
+                    <div class="checkbox-text">
+                        <div class="checkbox-content">
+                            <input type="checkbox" id="termCon">
+                            <label for="termCon" class="text">I accepted all terms and conditions</label>
+                        </div>
+                    </div>
+
+                    <div class="input-field button">
+                        <input type="submit" value="Signup" onclick="userSignup()">
+                    </div>
+                </form>
+
+                <div class="login-signup">
+                    <span class="text">Already a member?
+                        <a href="#" class="text login-link" >Login Now</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script  src="res/scripts/script.js"></script>
+    <script>
+        function checkForm() {
+            var userEmail  = $("#userEmail").val();
+            var userPassword  = $("#userPassword").val();
+            if (userEmail == "" || userPassword=="" || ( (userEmail== "") && (userPassword=="")) ){
+                return false;
+            }
+            return true;
+        }
+        function checkFormSignUp() {
+            var firstname  = $("#firstname").val();
+            var lastname  = $("#lastname").val();
+            var email  = $("#email").val();
+            var password  = $("#password").val();
+            var rpassword  = $("#rpassword").val();
+            var permittype  = $("#permittype").val();
+            var permitnumber  = $("#permitnumber").val();
+            var phone  = $("#phone").val();
+
+            if (firstname == "" || lastname=="" || email == "" || password=="" || rpassword=="" || permittype == "" || permitnumber=="" || phone==""  ){
+                return false;
+            }
+            return true;
+        }
+        function userSignup(){
+
+            var flag= checkFormSignUp();
+            if (flag==false){
+                return
+            }
+            var firstname  = $("#firstname").val();
+            var lastname  = $("#lastname").val();
+            var email  = $("#email").val();
+            var password  = $("#password").val();
+            var permittype  = $("#permittype").val();
+            var permitnumber  = $("#permitnumber").val();
+            var phonenumber  = $("#phone").val();
+
+            $.ajax({
+                url: 'http://localhost:8081/add/customer',
+                type: 'POST',
+                body:'raw',
+                dataType : "json",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    firstName:firstname,
+                    lastName:lastname,
+                    email:email,
+                    password:password,
+                    permitType:permittype,
+                    permitNumber:permitnumber,
+                    phoneNumber:phonenumber}),
+                success: function (data) {
+                    alert("User is created");
+                    window.location.href = 'http://localhost:63342/hokies-park/HokiesParkWebApp/login.html';
+                }
+            });
+
+        }
+        function verifyLogin(){
+            var userEmail  = $("#userEmail").val();
+            var userPassword  = $("#userPassword").val();
+            var flag= checkForm();
+            if (flag==false){
+                return
+            }
+            $.ajax({
+                url: 'http://localhost:8081/login/customer',
+                data: jQuery.param({email:userEmail,password:userPassword}),
+                dataType : "json",
+                contentType: "application/json",
+                crossDomain: true,
+                success: async function (data) {
+                    if (data * 1) {
+                        $.ajax({
+                            url: 'http://localhost:8081/get/customerNameByEmail/' + userEmail,
+                            type: 'GET',
+                            data: {get_param: 'value'},
+                            success: function (data) {
+                                localStorage.setItem("user", data);
+                            }
+                        });
+                        await new Promise(r => setTimeout(r, 2000));
+                        window.location.href = 'http://localhost:63342/hokies-park/HokiesParkWebApp/index.html';
+                    } else {
+                       alert("Username or Password is incorrect");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert("Username or Password is incorrect");
+                }
+
+            });
+        }
+
+    </script>
+
+</body>
+</html>

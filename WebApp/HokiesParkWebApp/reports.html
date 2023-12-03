@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Parking lots</title>
+  <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="styles/homeStyles.css">
+  <link rel="icon" type="image/x-icon" href="res/img/logo.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    .all-rounded {
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
+
+    .spacer {
+      display: block;
+    }
+
+    .progress-bar {
+      display: inline-block;
+      width: 100px;
+      background: lightcoral;
+      position: relative;
+    }
+
+    h4.event_desc {
+      line-height:20px;
+    }
+
+    .progress-bar-percentage {
+      background: lightgreen;
+      padding: 5px 0px;
+      color: #FFF;
+      text-align: center;
+      height: 20px;
+    }
+
+    .progress-bar-percentage span {
+      display: inline-block;
+      position: absolute;
+      width: 100%;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="page">
+  <header id="header">
+    <div id="header-inner">
+      <div id="logo">
+        <img src="res/img/logo.png" alt = "Logo">
+        <h1><a href="index.html">Hokies'<span>Park</span></a></h1>
+      </div>
+      <div id="top-nav">
+        <ul>
+          <li id="li1"> <a href="login.html"><strong><ul>Login</ul></strong></a></li>
+          <li id="li2"><a href="index.html"><strong><ul>Home</ul></strong></a></li>
+          <li id="li3"><a href="#">My Bookings</a></li>
+          <li id="li4"> <a href="index.html" onclick="userLogout()"><strong><ul>Logout</ul></strong></a></li>
+          <li style="display:flex"><label id="welcome" style="font-size: 14px;padding: 8px 20px; color:#972a5d;font-weight: bold;font-style: italic; height: 45px"  ></label> </li>
+        </ul>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </header>
+  <div class="feature">
+    <div class="feature-inner">
+      <h1>Parking Reports</h1>
+    </div>
+  </div>
+
+
+  <div id="content">
+    <div id="content-inner">
+
+      <main id="contentbar">
+        <div id="content2">
+
+          <span>Which PDF do you want?</span>
+          <select id = "ddlPassport" onchange = "showPDF()">
+            <option value="N">No</option>
+            <option value="1">Transient Analysis</option>
+            <option value="2">Cost Analysis</option>
+            <option value="3">Permit Analysis</option>
+          </select>
+          <hr />
+          <iframe src="https://drive.google.com/file/d/1SRaT0wfDxPuaSf6pThieuRxWmyC9Dw3T/preview" width="640" height="480" allow="autoplay"></iframe>
+          <div id="dvPassport2" style="display: none">
+            <iframe src="http://docs.google.com/gview?url=https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf&embedded=true"
+                    style="width:600px; height:500px;" frameborder="0"></iframe>
+          </div>
+
+
+
+        </div>
+      </main>
+
+      <nav id="sidebar">
+        <div class="widget">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="parking.html">Find a parking</a></li>
+            <li><a href="tracking.html">Live Tracking</a></li>
+            <li><a href="maps.html"><strong><u>Maps</u></strong></a></li>
+            <li><a href="#">Sublease a space</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="clr"></div>
+    </div>
+  </div>
+
+  <div id="footerblurb">
+    <div id="footerblurb-inner">
+
+      <div class="column">
+        <h2><span>Vehicle Storage</span></h2>
+        <ul>
+          <li>RV Storage</li>
+          <li>Car Storage</li>
+          <li>Truck Storage</li>
+          <li>Boat Storage</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h2><span>Parking</span></h2>
+        <ul>
+          <li>Garages</li>
+          <li>Monthly Parking</li>
+          <li>Parking Spaces</li>
+          <li>Long-term Parking</li>
+        </ul>
+      </div>
+      <div class="column">
+        <h2><span>Company</span></h2>
+        <ul>
+          <li>Become a host</li>
+          <li>Reviews</li>
+          <li>Affiliate Partners</li>
+          <li>How it works</li>
+        </ul>
+      </div>
+
+      <div class="clr"></div>
+    </div>
+  </div>
+  <footer id="footer">
+    <div id="footer-inner">
+      <p>&copy; Copyright <a href="#">Hokies' Park</a> &#124; <a href="#">Terms of Use</a> &#124; <a href="#">Privacy Policy</a></p>
+      <div class="clr"></div>
+    </div>
+  </footer>
+</div>
+</body>
+
+<script>
+  document.onreadystatechange = function logedInuser(){
+
+    if(localStorage.getItem("user") == 'null'){
+      document.getElementById('li4').style.visibility='hidden';
+      document.getElementById('welcome').style.visibility='hidden';
+    }else{
+      document.getElementById('li1').style.visibility='hidden';
+      document.getElementById('welcome').style.visibility='visible';
+      document.getElementById('welcome').textContent = "Hello, "+localStorage.getItem("user");
+    }
+
+  }
+  function showPDF() {
+    var ddlPassport = document.getElementById("ddlPassport");
+    var dvPassport = document.getElementById("dvPassport");
+    var dvPassport2 = document.getElementById("dvPassport2");
+//dvPassport.style.display = ddlPassport.value == "Y" ? "block" : "none";
+
+    if (ddlPassport.value == "1") {
+      dvPassport.style.display = "block"
+      dvPassport2.style.display = "none"
+    }
+    else if (ddlPassport.value == "2") {
+      dvPassport.style.display = "none"
+      dvPassport2.style.display = "block"
+    }
+    else if (ddlPassport.value == "3") {
+      dvPassport.style.display = "none"
+      dvPassport2.style.display = "block"
+    }
+    else {
+      dvPassport.style.display = "none"
+      dvPassport2.style.display = "none"
+    }
+  }
+
+  //https://drive.google.com/file/d/1UxjsSOfh2TRwvj6U19Sec5QuZSDw4JKF/view?usp=share_link
+</script>
