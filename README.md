@@ -1,4 +1,4 @@
-# Hokies-Park
+# Hokies'-Park
 
 Members -  Vijay Balaji, Manas Shukla, Preyas Hanche, Vrajesh Shah, Arwa Alebrahim, Anupa Shah 
 
